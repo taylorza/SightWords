@@ -2,7 +2,7 @@
   "cacheBootResources": true,
   "config": [ ],
   "debugBuild": false,
-  "entryAssembly": "SiteWords",
+  "entryAssembly": "SightWords",
   "icuDataMode": 0,
   "linkerEnabled": true,
   "resources": {
@@ -21,7 +21,7 @@
       "Microsoft.Extensions.Primitives.dll": "sha256-eXvGx2jcjpTPEJoAHBsW\/VuMPbNyyU+AsuhPmkzSSRY=",
       "Microsoft.JSInterop.dll": "sha256-ySJV1nFPuS70sEUtmr6SmdD7gsoYGbvvPsr2Zn9XeH8=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-Awf7wv9O8IMhKfPgck20vnr8m17qkGi5wsUfHhliPCQ=",
-      "SiteWords.dll": "sha256-9XSIuiEJSa6tOgCDR8GCzUaeNAg+kIPadUpo9x6ljtQ=",
+      "SightWords.dll": "sha256-CRNyEEipMfpow6ejXBN29TeI8+RAoD7z17o9KBgqkH0=",
       "System.Collections.Concurrent.dll": "sha256-782KacekEtwxuDcg05F3W1iMFuuWe0jXh92zSIAvLu0=",
       "System.Collections.dll": "sha256-S6V9OAhYENF6Z0x9QhtOjv8xm4ZzBRYRiHt91Yoh0hw=",
       "System.ComponentModel.dll": "sha256-nDL4uAnV8XjBp7HMR8402tCIjKLnxen\/fQEcevUyqXs=",
