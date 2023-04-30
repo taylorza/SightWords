@@ -1,9 +1,22 @@
 ﻿@page "/"
 
 <PageTitle>Sight Words</PageTitle>
-<div class="top-row px-4" style="font-size:small">
-    <a href="https://www.flaticon.com" title="icons">Icons created by nawicon - Flaticon</a>
+<div class="top-row px-4">
+    <a href="https://www.flaticon.com" title="icons" style="font-size:x-small">Icons created by nawicon - Flaticon</a>
+    <div style="text-align:end">
+        Words
+        <select @onchange="ChangeWordSet">
+            @for(int i=0; i < _sets.Count; i++)
+            {
+                <option value=@i>
+                    @string.Format("Set {0}", i+1)
+                </option>
+            }
+        </select>
+    </div>
+    
 </div>
+
 <div class="hvcenter">
     <p style="font-size: 25vw;">@_words[_wordIndex]</p>
     <div class="center" style="font-size: 16pt">
@@ -19,14 +32,27 @@
     private const string PlayImageUrl = "images/play.png";
     private const string PauseImageUrl = "images/pause.png";
 
-    private List<string> _words = new()
+    private static List<List<string>> _sets = new List<List<string>>()
     {
-        "go", "see", "dad", "mom", "away", "blue", "come", "down", "find", "funny",
-        "help", "three", "here", "got", "play", "red", "jump", "run", "where", "yellow",
-        "said", "all", "do", "no", "well", "eat", "now", "went", "will", "four",
-        "soon", "get", "our", "that", "white", "ate", "good", "there", "who", "please",
-        "they", "black", "pretty", "this", "with", "brown", "into", "ran", "yes", "ride",
+        new()
+        {
+            "a", "I", "am", "at", "to", "me", "the", "can", "up", "look",
+            "he", "by", "big", "like", "my", "you", "it", "him", "on", "if",
+            "we", "for", "two", "be", "not", "or", "so", "had", "will", "and",
+            "she", "your", "but", "is", "out", "are", "too", "did", "one", "day",
+            "just", "what", "food", "little", "school", "some", "have", "make", "was", "in"
+        },
+        new()
+        {
+            "go", "see", "dad", "mom", "away", "blue", "come", "down", "find", "funny",
+            "help", "three", "here", "got", "play", "red", "jump", "run", "where", "yellow",
+            "said", "all", "do", "no", "well", "eat", "now", "went", "will", "four",
+            "soon", "get", "our", "that", "white", "ate", "good", "there", "who", "please",
+            "they", "black", "pretty", "this", "with", "brown", "into", "ran", "yes", "ride",
+        }
     };
+
+    private List<string> _words = _sets[0];
 
     private Timer? _timer;
     private int _wordIndex;
@@ -63,6 +89,17 @@
             list[k] = list[n];
             list[n] = value;
         }
+    }
+
+    private void ChangeWordSet(ChangeEventArgs e)
+    {
+        Pause();
+        _wordIndex = 0;
+        if (e.Value is string s)
+        {
+            _words = _sets[Int32.Parse(s)];
+        }
+        UpdateState();
     }
 
     private void PauseOrPlay()
