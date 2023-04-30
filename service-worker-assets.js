@@ -33,11 +33,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-GrhGtxX2cs3kijXStUqryPkGx\/22jqphI3aNummHS4U=",
+      "hash": "sha256-ixsGyOe\/0ze1hJQ7qrt34pT63YB55HfsJkaOg7ZbNwY=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-\/+L9Al0JK1KPmniiycHXDPxJ7\/B1eSn+xJWI5UVfWgU=",
+      "hash": "sha256-Zwfe5PMlFOCUuqIbr6gQ5EGUBoOH4ohDdBWzvbmsQa4=",
       "url": "_framework\/Microsoft.AspNetCore.Components.dll"
     },
     {
@@ -93,7 +93,7 @@
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
-      "hash": "sha256-Q0li6A5MIlU7AzcMAGaBHVkrYWxEbVhjQsg61S3W3Gk=",
+      "hash": "sha256-oyNGe6Tn0sFSVUJeMI8uNshxhDlR9UguhYXfesiKNQE=",
       "url": "_framework\/SightWords.dll"
     },
     {
@@ -129,7 +129,7 @@
       "url": "_framework\/System.Net.Primitives.dll"
     },
     {
-      "hash": "sha256-sC1cnb5W4buapp\/jwyxUJERyQ\/aRbguiUa5N6pTduQ8=",
+      "hash": "sha256-SMFrAYV65hTYU7gCf9TtC1J0ECbnbgojE8vvKltnHcE=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
@@ -137,7 +137,7 @@
       "url": "_framework\/System.Private.Uri.dll"
     },
     {
-      "hash": "sha256-RkX94YHmwkfEY4Xtl16YlF7mEqxBwICiPdh2ePHwVd0=",
+      "hash": "sha256-Q9FZSlnbx0AU0Tr4Odmzhz5t\/Rl5qPhNbVI1strpvJ0=",
       "url": "_framework\/System.Runtime.dll"
     },
     {
@@ -245,5 +245,5 @@
       "url": "sample-data\/weather.json"
     }
   ],
-  "version": "7u8Kmdl8"
+  "version": "eQOV\/kNn"
 };
