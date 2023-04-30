@@ -5,11 +5,11 @@
     <a href="https://www.flaticon.com" title="icons">Icons created by nawicon - Flaticon</a>
 </div>
 <div class="hvcenter">
-    <p style="font-size: 20vw;">@_words[_wordIndex]</p>
+    <p style="font-size: 25vw;">@_words[_wordIndex]</p>
     <div class="center" style="font-size: 16pt">
         <p>@(_wordIndex + 1) of @_words.Count</p>
-        <button @onclick="PrevWord"><img width="25" height="25" src=@BackImageUrl /></button>
-        <button @onclick="PauseOrPlay"><img width="25" height="25" src=@_stateImage /></button>
+        <button @onclick="PrevWord"><img width="32" height="32" src=@BackImageUrl /></button>
+        <button @onclick="PauseOrPlay"><img width="32" height="32" src=@_stateImage /></button>
     </div>
 </div>
 
@@ -47,7 +47,8 @@
                 NextWord();
                 StateHasChanged();
             });
-        }, null, 0, 3000);
+        }, null, Timeout.Infinite, Timeout.Infinite);
+        Pause();
         UpdateState();
     }
 
@@ -68,20 +69,20 @@
     {
         if (_paused)
         {
-            _paused = false;
+            Play();
             NextWord();
         } 
         else
         {
-            _paused = true;
+            Pause();
         }
         UpdateState();
     }
 
     private void PrevWord()
     {
+        Pause();
         if(_wordIndex > 0) _wordIndex--;
-        _paused = true;
         UpdateState();
     }
 
@@ -93,6 +94,18 @@
             Shuffle(_words);
             _wordIndex = 0;
         }
+    }
+
+    private void Pause()
+    {
+        _paused = true;
+        _timer?.Change(Timeout.Infinite, Timeout.Infinite);
+    }
+
+    private void Play()
+    {
+        _paused = false;
+        _timer?.Change(3000, 3000);
     }
 
     private void UpdateState()
