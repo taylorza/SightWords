@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using SiteWords;
+using SightWords;
 
-namespace SiteWords
+namespace SightWords
 {
 	public class Program
 	{

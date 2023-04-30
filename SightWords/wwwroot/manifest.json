@@ -1,6 +1,6 @@
 {
-  "name": "SiteWords",
-  "short_name": "SiteWords",
+  "name": "SightWords",
+  "short_name": "SightWords",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
