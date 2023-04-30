@@ -1,0 +1,54 @@
+﻿@page "/sitewords"
+
+<PageTitle>Site Words</PageTitle>
+
+<div class="hvcenter">
+    <p>@_words[_wordIndex]</p>
+</div>
+
+@code {
+    private List<string> _words = new()
+    {
+        "go", "see", "dad", "mom", "away", "blue", "come", "down", "find", "funny",
+        "help", "three", "here", "got", "play", "red", "jump", "run", "where", "yellow",
+        "said", "all", "do", "no", "well", "eat", "now", "went", "will", "four",
+        "soon", "get", "our", "that", "white", "ate", "good", "there", "who", "please",
+        "they", "black", "pretty", "this", "with", "brown", "into", "ran", "yes", "ride",
+    };
+
+    private Timer? _timer;
+    private int _wordIndex;
+    private Random _rng = new();
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        _timer = new Timer((_) =>
+        {
+            InvokeAsync(() =>
+            {
+                _wordIndex++;
+                if (_wordIndex == _words.Count)
+                {
+                    Shuffle(_words);
+                    _wordIndex = 0;
+                }
+                StateHasChanged();
+            });
+        }, null, 0, 3000);
+    }
+
+    private void Shuffle<T>(IList<T> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = _rng.Next(n + 1);
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
+    }
+}
