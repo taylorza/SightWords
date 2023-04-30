@@ -109,5 +109,11 @@ a, .btn-link {
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    font-size: 20vw;
+}
+
+.center {
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+    text-align:center;
 }

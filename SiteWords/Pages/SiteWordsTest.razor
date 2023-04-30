@@ -1,20 +1,23 @@
 ﻿@page "/"
 
 <PageTitle>Site Words</PageTitle>
-
-<p>@(_wordIndex+1) of @_words.Count</p>
-<button style="font-size:larger" @onclick="PrevWord">@Rewind</button>
-<button style="font-size:larger" @onclick="PauseOrPlay">@_stateLabel</button>
-
+<div class="top-row px-4">
+    <a href="https://www.flaticon.com/free-icons/" title="icons">Icons created by nawicon - Flaticon</a>
+</div>
 <div class="hvcenter">
-    <p>@_words[_wordIndex]</p>
+    <p style="font-size: 20vw;">@_words[_wordIndex]</p>
+    <div class="center">
+        <p>@(_wordIndex + 1) of @_words.Count</p>
+        <button style="font-size:larger" @onclick="PrevWord"><img width="25" height="25" src=@BackImageUrl /></button>
+        <button style="font-size:larger" @onclick="PauseOrPlay"><img width="25" height="25" src=@_stateImage /></button>
+    </div>
 </div>
 
 
 @code {
-    private const char Rewind = '\x23EE';
-    private const char Pause = '\x23f5';
-    private const char Play = '\x23f8';
+    private const string BackImageUrl = "images/back.png";
+    private const string PlayImageUrl = "images/play.png";
+    private const string PauseImageUrl = "images/pause.png";
 
     private List<string> _words = new()
     {
@@ -29,8 +32,8 @@
     private int _wordIndex;
     private Random _rng = new();
     private bool _paused = true;
-    private char _stateLabel = Play;
-    
+    private string _stateImage = PlayImageUrl;
+
 
     protected override void OnInitialized()
     {
@@ -66,6 +69,7 @@
         if (_paused)
         {
             _paused = false;
+            NextWord();
         } 
         else
         {
@@ -95,11 +99,11 @@
     {
         if (_paused)
         {
-            _stateLabel = Pause;
+            _stateImage = PlayImageUrl;
         }
         else
         {
-            _stateLabel = Play;
+            _stateImage = PauseImageUrl;
         }
     }
 }
