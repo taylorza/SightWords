@@ -1,12 +1,21 @@
-﻿@page "/sitewords"
+﻿@page "/"
 
 <PageTitle>Site Words</PageTitle>
+
+<p>@(_wordIndex+1) of @_words.Count</p>
+<button style="font-size:larger" @onclick="PrevWord">@Rewind</button>
+<button style="font-size:larger" @onclick="PauseOrPlay">@_stateLabel</button>
 
 <div class="hvcenter">
     <p>@_words[_wordIndex]</p>
 </div>
 
+
 @code {
+    private const char Rewind = '\x23EE';
+    private const char Pause = '\x23f5';
+    private const char Play = '\x23f8';
+
     private List<string> _words = new()
     {
         "go", "see", "dad", "mom", "away", "blue", "come", "down", "find", "funny",
@@ -19,6 +28,9 @@
     private Timer? _timer;
     private int _wordIndex;
     private Random _rng = new();
+    private bool _paused = true;
+    private char _stateLabel = Play;
+    
 
     protected override void OnInitialized()
     {
@@ -28,15 +40,12 @@
         {
             InvokeAsync(() =>
             {
-                _wordIndex++;
-                if (_wordIndex == _words.Count)
-                {
-                    Shuffle(_words);
-                    _wordIndex = 0;
-                }
+                if (_paused) return;
+                NextWord();
                 StateHasChanged();
             });
         }, null, 0, 3000);
+        UpdateState();
     }
 
     private void Shuffle<T>(IList<T> list)
@@ -49,6 +58,48 @@
             T value = list[k];
             list[k] = list[n];
             list[n] = value;
+        }
+    }
+
+    private void PauseOrPlay()
+    {
+        if (_paused)
+        {
+            _paused = false;
+        } 
+        else
+        {
+            _paused = true;
+        }
+        UpdateState();
+    }
+
+    private void PrevWord()
+    {
+        if(_wordIndex > 0) _wordIndex--;
+        _paused = true;
+        UpdateState();
+    }
+
+    private void NextWord()
+    {
+        _wordIndex++;
+        if (_wordIndex == _words.Count)
+        {
+            Shuffle(_words);
+            _wordIndex = 0;
+        }
+    }
+
+    private void UpdateState()
+    {
+        if (_paused)
+        {
+            _stateLabel = Pause;
+        }
+        else
+        {
+            _stateLabel = Play;
         }
     }
 }
